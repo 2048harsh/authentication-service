@@ -20,6 +20,7 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/oauth2/jwks").permitAll()        // Native Public Key Endpoint open to other pods
                 .requestMatchers("/api/v1/auth/login").permitAll()  // Login controller open to users
+                .requestMatchers("/api/v1/util/**").permitAll()
                 .anyRequest().authenticated()
             );
 

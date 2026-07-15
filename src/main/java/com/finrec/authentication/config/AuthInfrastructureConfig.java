@@ -30,13 +30,18 @@ public class AuthInfrastructureConfig {
         return new Argon2PasswordEncoder(16, 32, 1, 16384, 3);
     }
 
-    // 2. Demo User Registry (Simulating your database)
-    @Bean
-    UserDetailsService userDetailsService(PasswordEncoder encoder) {
-        UserDetails user = User.builder().username("user").password(encoder.encode("userpass")).roles("USER").build();
-        UserDetails admin = User.builder().username("admin").password(encoder.encode("adminpass")).roles("ADMIN", "USER").build();
-        return new InMemoryUserDetailsManager(user, admin);
-    }
+//    // 2. Demo User Registry (Simulating your database)
+//    @Bean
+//    UserDetailsService userDetailsService(PasswordEncoder encoder) {
+//        UserDetails user = User.withUsername("user")
+//            .password(encoder.encode("userpass"))
+//            .roles("USER").build();
+//        UserDetails admin = User.withUsername("admin")
+//            .password(encoder.encode("adminpass"))
+//            .roles("ADMIN","USER").build();
+//        return new InMemoryUserDetailsManager(user, admin);
+//    }
+
 
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
